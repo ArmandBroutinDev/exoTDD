@@ -1,7 +1,8 @@
 # pull official base image
-FROM python:3.6.9-slim-buster
+FROM python:3.9.6-slim-buster
 
 # set working directory
+RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
 # set environment variables
@@ -10,7 +11,7 @@ ENV PYTHONUNBUFFERED 1
 
 # install system dependencies
 RUN apt-get update \
-	&& apt-get -y install netcat gcc \
+	&& apt-get -y install netcat gcc postgresql\
 	&& apt-get clean
 
 # install python dependencies
